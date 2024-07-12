@@ -12,12 +12,8 @@ fn encode_image_to_thumbhash(
     let width_usize = width.extract::<usize>()?;
     let height_usize = height.extract::<usize>()?;
     let base64_string = base64_string.to_str()?;
-    println!("Width  : {:?}", width_usize);
-    println!("Height : {:?}", height_usize);
-    println!("Payload: {:?}", base64_string);
-    let image_data = BASE64_STANDARD.decode(base64_string).unwrap();
-    println!("Bytes  : {:?}", image_data);
 
+    let image_data = BASE64_STANDARD.decode(base64_string).unwrap();
     let thumbhash = rgba_to_thumb_hash(width_usize, height_usize, &image_data);
     Ok(thumbhash.to_vec())
 }
